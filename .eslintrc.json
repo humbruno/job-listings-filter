@@ -18,6 +18,7 @@
     "no-console": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
+    "react/function-component-definition": "off",
     "react/jsx-filename-extension": [
       1,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
