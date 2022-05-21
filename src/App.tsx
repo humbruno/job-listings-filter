@@ -1,3 +1,4 @@
+import JobList from './components/JobList';
 import GlobalStyles from './components/styles/Global';
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
   return (
     <div>
       <GlobalStyles />
-      <h1>Hello</h1>
+      <JobList />
     </div>
   );
 }
