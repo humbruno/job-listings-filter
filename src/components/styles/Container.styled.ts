@@ -5,6 +5,8 @@ const Container = styled.main`
 
   margin-top: 156px;
   min-height: 100vh;
+
+  padding: 76px 128px;
 `;
 
 export default Container;
