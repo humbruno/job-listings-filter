@@ -5,11 +5,12 @@ const GlobalStyles = styled.createGlobalStyle`
 
   :root {
     --bg-primary: hsl(180, 52%, 96%);
+
     --clr-primary: hsl(180, 29%, 50%);
     --clr-secondary: hsl(180, 14%, 20%);
     --clr-tertiary: hsl(180, 8%, 52%);
 
-    --lightGrayishCyan: hsl(180, 31%, 95%); // filter tablets
+    --btn-filter: hsl(180, 31%, 95%);
   }
 
   *,
