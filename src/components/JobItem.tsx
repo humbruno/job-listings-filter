@@ -10,7 +10,7 @@ const JobItem: React.FC<{ job: Job }> = ({ job }) => {
   const isNew: boolean = job.new;
 
   return (
-    <Item>
+    <Item isFeatured={job.featured}>
       <div className="job__info">
         <img src={job.logo} alt="" />
         <div className="job__info-description">
@@ -19,7 +19,7 @@ const JobItem: React.FC<{ job: Job }> = ({ job }) => {
             {(isFeatured || isNew) && (
               <ul>
                 {isNew && <HighlightLabel isNew />}
-                {isFeatured && <HighlightLabel isNew={false} />}
+                {isFeatured && <HighlightLabel />}
               </ul>
             )}
           </div>

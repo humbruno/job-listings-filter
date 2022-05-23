@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Item = styled.li`
+const Item = styled.li<{ isFeatured: boolean }>`
   background-color: #fff;
 
   padding: 32px 40px;
@@ -12,7 +12,8 @@ const Item = styled.li`
 
   box-shadow: 0px 15px 20px -5px rgba(13, 113, 130, 0.15);
 
-  border-left: 5px solid var(--clr-primary); //to be added dynamically from props (if feature)
+  border-left: ${(props) =>
+    props.isFeatured ? '5px solid var(--clr-primary)' : 'none'};
 
   .job__info {
     display: flex;
