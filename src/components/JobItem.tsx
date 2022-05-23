@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import JobLabel from './JobLabel';
 import Item from './styles/JobItem.styled';
 
 const JobItem: React.FC = () => {
@@ -17,11 +18,17 @@ const JobItem: React.FC = () => {
           </ul>
         </div>
       </div>
-      <div className="job__labels">
-        <button type="button">Frontend</button>
-        <button type="button">Senior</button>
-        <button type="button">HTML</button>
-      </div>
+      <ul className="job__labels">
+        <li>
+          <JobLabel />
+        </li>
+        <li>
+          <JobLabel />
+        </li>
+        <li>
+          <JobLabel />
+        </li>
+      </ul>
     </Item>
   );
 };

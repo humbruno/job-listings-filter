@@ -55,6 +55,12 @@ const Item = styled.li`
       row-gap: 8px;
     }
   }
+
+  .job__labels {
+    list-style: none;
+    display: flex;
+    column-gap: 16px;
+  }
 `;
 
 export default Item;
