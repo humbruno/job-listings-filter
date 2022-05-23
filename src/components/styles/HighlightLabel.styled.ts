@@ -6,8 +6,7 @@ const Highlighted = styled.li`
   text-transform: uppercase;
 
   color: #fff;
-  background-color: #2b3939; //needs to be refactored to change based on props
-
+  background-color: ${(props) => (props.bg === 'new' ? '#5CA5A5' : '#2B3939')};
   padding: 6px 8px;
   border-radius: 12px;
 `;

@@ -6,6 +6,9 @@ import JobLabel from './JobLabel';
 import Item from './styles/JobItem.styled';
 
 const JobItem: React.FC<{ job: Job }> = ({ job }) => {
+  const isFeatured: boolean = job.featured;
+  const isNew: boolean = job.new;
+
   return (
     <Item>
       <div className="job__info">
@@ -13,10 +16,12 @@ const JobItem: React.FC<{ job: Job }> = ({ job }) => {
         <div className="job__info-description">
           <div className="job__title">
             <h2>{job.company}</h2>
-            <ul>
-              <HighlightLabel />
-              <HighlightLabel />
-            </ul>
+            {(isFeatured || isNew) && (
+              <ul>
+                {isNew && <HighlightLabel isNew />}
+                {isFeatured && <HighlightLabel isNew={false} />}
+              </ul>
+            )}
           </div>
           <h3>{job.position}</h3>
           <ul className="job__tags">
@@ -27,15 +32,16 @@ const JobItem: React.FC<{ job: Job }> = ({ job }) => {
         </div>
       </div>
       <ul className="job__labels">
-        <li>
-          <JobLabel />
-        </li>
-        <li>
-          <JobLabel />
-        </li>
-        <li>
-          <JobLabel />
-        </li>
+        {job.languages.map((language) => (
+          <li>
+            <JobLabel label={language} />
+          </li>
+        ))}
+        {job.tools.map((tool) => (
+          <li>
+            <JobLabel label={tool} />
+          </li>
+        ))}
       </ul>
     </Item>
   );
