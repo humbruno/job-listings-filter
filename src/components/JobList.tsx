@@ -3,9 +3,13 @@ import JobItem from './JobItem';
 
 import List from './styles/JobList.styled';
 
-const JobList: React.FC = () => (
+import Job from '../types/Job';
+
+const JobList: React.FC<{ jobs: Job[] }> = ({ jobs }) => (
   <List>
-    <JobItem />
+    {jobs.map((job) => (
+      <JobItem key={job.id} job={job} />
+    ))}
   </List>
 );
 

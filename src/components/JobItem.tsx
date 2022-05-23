@@ -1,27 +1,28 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import Job from '../types/Job';
 import HighlightLabel from './HighlightLabel';
 import JobLabel from './JobLabel';
 import Item from './styles/JobItem.styled';
 
-const JobItem: React.FC = () => {
+const JobItem: React.FC<{ job: Job }> = ({ job }) => {
   return (
     <Item>
       <div className="job__info">
-        <img src="./assets/photosnap.svg" alt="" />
+        <img src={job.logo} alt="" />
         <div className="job__info-description">
           <div className="job__title">
-            <h2>Photosnap</h2>
+            <h2>{job.company}</h2>
             <ul>
               <HighlightLabel />
               <HighlightLabel />
             </ul>
           </div>
-          <h3>Senior Frontend Developer</h3>
+          <h3>{job.position}</h3>
           <ul className="job__tags">
-            <li>1d ago</li>
-            <li>Full Time</li>
-            <li>USA only</li>
+            <li>{job.postedAt}</li>
+            <li>{job.contract}</li>
+            <li>{job.location}</li>
           </ul>
         </div>
       </div>
