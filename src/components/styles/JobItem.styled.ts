@@ -20,7 +20,7 @@ const Item = styled.li`
 
     column-gap: 24px;
 
-    ul {
+    .job__tags {
       display: flex;
       font-size: 0.9375rem;
       color: var(--clr-tertiary);
@@ -60,6 +60,19 @@ const Item = styled.li`
     list-style: none;
     display: flex;
     column-gap: 16px;
+  }
+
+  .job__title {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 8px;
+    }
   }
 `;
 
