@@ -10,8 +10,21 @@ function App() {
   const [jobs, setJobs] = useState<Job[]>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isFiltered, setIsFiltered] = useState<boolean>(false);
+  const [filteredList, setFilteredList] = useState<string[]>([
+    'JavaScript',
+    'React',
+    'CSS',
+    'TypeScript',
+  ]); // placeholder items in array, to remove
 
-  const clickHandler = () => setIsFiltered(!isFiltered);
+  /*  const addFilterItem = (item: string) => {
+    setFilteredList((currentList) => [...currentList, item]);
+  }; */
+
+  const clickHandler = () => {
+    setIsFiltered(!isFiltered);
+    setFilteredList(filteredList); // to remove later, placeholder only
+  };
 
   useEffect(() => {
     fetch('data.json')
@@ -26,7 +39,7 @@ function App() {
   return (
     <Container>
       <GlobalStyles />
-      {isFiltered && <FilterTable />}
+      {isFiltered && <FilterTable list={filteredList} />}
       {isLoading && <p>Loading</p>}
       <button type="button" onClick={clickHandler}>
         Filter

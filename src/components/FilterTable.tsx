@@ -1,19 +1,13 @@
 import React from 'react';
-import JobLabel from './JobLabel';
+import FilterLabel from './FilterLabel';
 import Filter from './styles/FilterTable.styled';
 
-const FilterTable = () => (
+const FilterTable: React.FC<{ list: string[] }> = ({ list }) => (
   <Filter>
     <ul>
-      <li>
-        <JobLabel label="React" />
-      </li>
-      <li>
-        <JobLabel label="JavaScript" />
-      </li>
-      <li>
-        <JobLabel label="CSS" />
-      </li>
+      {list.map((filter) => (
+        <FilterLabel key={filter} label={filter} />
+      ))}
     </ul>
     <button type="button" className="clear">
       Clear
