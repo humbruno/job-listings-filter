@@ -1,7 +1,7 @@
 import JobList from './components/JobList';
-import Container from './components/styles/Container.styled';
-import GlobalStyles from './components/styles/Global';
-import { JobContextProvider } from './context/JobContext';
+import Container from './styles/Container.styled';
+import GlobalStyles from './styles/Global';
+import { JobContextProvider } from './contexts/JobContext';
 
 function App() {
   return (

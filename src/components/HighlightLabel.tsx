@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 
 import React from 'react';
-import Highlighted from './styles/HighlightLabel.styled';
+import Highlighted from '../styles/HighlightLabel.styled';
 
 interface LabelProps {
   isNew?: boolean;

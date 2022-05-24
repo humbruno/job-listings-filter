@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import JobItem from './JobItem';
 
-import List from './styles/JobList.styled';
+import List from '../styles/JobList.styled';
 
-import { JobContext } from '../context/JobContext';
+import { JobContext } from '../contexts/JobContext';
 import FilterTable from './FilterTable';
 
 const JobList = () => {

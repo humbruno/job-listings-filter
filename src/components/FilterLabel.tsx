@@ -1,5 +1,5 @@
 import React from 'react';
-import LabelFilter from './styles/FilterLabel.styled';
+import LabelFilter from '../styles/FilterLabel.styled';
 
 const FilterLabel: React.FC<{ label: string }> = ({ label }) => (
   <LabelFilter>

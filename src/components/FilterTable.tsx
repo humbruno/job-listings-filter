@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterLabel from './FilterLabel';
-import Filter from './styles/FilterTable.styled';
+import Filter from '../styles/FilterTable.styled';
 
 const FilterTable: React.FC<{ list: string[] }> = ({ list }) => (
   <Filter>
