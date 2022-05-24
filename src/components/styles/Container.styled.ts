@@ -7,6 +7,8 @@ const Container = styled.main`
   min-height: 100vh;
 
   padding: 76px 128px;
+
+  position: relative;
 `;
 
 export default Container;

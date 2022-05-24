@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
-import Job from '../types/Job';
+import { Job } from '../types/job';
 import HighlightLabel from './HighlightLabel';
 import JobLabel from './JobLabel';
 import Item from './styles/JobItem.styled';
