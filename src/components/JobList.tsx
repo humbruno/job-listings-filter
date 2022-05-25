@@ -8,7 +8,6 @@ import FilterTable from './FilterTable';
 
 const JobList = () => {
   const { jobs, isLoading } = useContext(JobContext);
-
   const { isFiltered, filteredList } = useContext(JobContext);
 
   if (isLoading) {

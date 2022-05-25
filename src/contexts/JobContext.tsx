@@ -1,5 +1,12 @@
 /* eslint-disable arrow-body-style */
-import { useState, useEffect, createContext, ReactNode, useMemo } from 'react';
+import {
+  useState,
+  useEffect,
+  createContext,
+  ReactNode,
+  useMemo,
+  useCallback,
+} from 'react';
 import { Job } from '../types/job';
 
 interface JobContextProps {
@@ -36,47 +43,7 @@ export const JobContextProvider = ({ children }: JobContextProps) => {
   const [isFiltered, setIsFiltered] = useState(initialValue.isFiltered);
   const [filteredList, setFilteredList] = useState(initialValue.filteredList);
 
-  const addFilter = (filter: string): void => {
-    if (filteredList.includes(filter)) {
-      return;
-    }
-
-    setFilteredList([...filteredList, filter]);
-    setIsFiltered(true);
-
-    /*   const newArray = jobs.filter((job) =>
-      filteredList.every(
-        (filterItem) =>
-          job.tools.includes(filterItem) || job.languages.includes(filterItem)
-      )
-    ); */
-
-    // eslint-disable-next-line array-callback-return
-    const filterJob = jobs.filter((job) => {
-      const labels = [...job.tools, ...job.languages];
-      return filteredList.every((item) => labels.includes(item));
-    });
-
-    setJobs(filterJob);
-  };
-
-  const removeFilter = (filter: string): void => {
-    const newList = filteredList.filter((item) => item !== filter);
-
-    if (newList.length === 0) {
-      setIsFiltered(false);
-      return;
-    }
-
-    setFilteredList(newList);
-  };
-
-  const clearFilter = (): void => {
-    setFilteredList([]);
-    setIsFiltered(false);
-  };
-
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     fetch('data.json')
       .then((res) => res.json())
       .then((data) => {
@@ -85,6 +52,45 @@ export const JobContextProvider = ({ children }: JobContextProps) => {
       })
       .catch((error) => console.log(error.message));
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line array-callback-return
+    const filterJob = jobs.filter((job) => {
+      const labels = [...job.tools, ...job.languages];
+      return filteredList.every((item) => labels.includes(item));
+    });
+
+    setJobs(filterJob);
+  }, [filteredList]);
+
+  const addFilter = (filter: string): void => {
+    if (filteredList.includes(filter)) {
+      return;
+    }
+
+    setFilteredList([...filteredList, filter]);
+    setIsFiltered(true);
+  };
+
+  const removeFilter = (filter: string): void => {
+    const newList = filteredList.filter((item) => item !== filter);
+    setFilteredList(newList);
+
+    if (newList.length === 0) {
+      setIsFiltered(false);
+      fetchData();
+    }
+  };
+
+  const clearFilter = (): void => {
+    setFilteredList([]);
+    setIsFiltered(false);
+    fetchData();
+  };
 
   const contextValue = useMemo(
     () => ({
