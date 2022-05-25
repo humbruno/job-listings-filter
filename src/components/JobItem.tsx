@@ -33,12 +33,12 @@ const JobItem: React.FC<{ job: Job }> = ({ job }) => {
       </div>
       <ul className="job__labels">
         {job.languages.map((language) => (
-          <li>
+          <li key={language}>
             <JobLabel label={language} />
           </li>
         ))}
         {job.tools.map((tool) => (
-          <li>
+          <li key={tool}>
             <JobLabel label={tool} />
           </li>
         ))}

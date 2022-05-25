@@ -44,14 +44,20 @@ export const JobContextProvider = ({ children }: JobContextProps) => {
     setFilteredList([...filteredList, filter]);
     setIsFiltered(true);
 
-    const newArray = jobs.filter((job) =>
+    /*   const newArray = jobs.filter((job) =>
       filteredList.every(
         (filterItem) =>
           job.tools.includes(filterItem) || job.languages.includes(filterItem)
       )
-    );
+    ); */
 
-    setJobs(newArray);
+    // eslint-disable-next-line array-callback-return
+    const filterJob = jobs.filter((job) => {
+      const labels = [...job.tools, ...job.languages];
+      return filteredList.every((item) => labels.includes(item));
+    });
+
+    setJobs(filterJob);
   };
 
   const removeFilter = (filter: string): void => {
