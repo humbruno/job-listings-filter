@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import JobItem from './JobItem';
 
 import List from '../styles/JobList.styled';
@@ -9,18 +9,7 @@ import FilterTable from './FilterTable';
 const JobList = () => {
   const { jobs, isLoading } = useContext(JobContext);
 
-  const [isFiltered, setIsFiltered] = useState<boolean>(false);
-  const [filteredList, setFilteredList] = useState<string[]>([
-    'JavaScript',
-    'React',
-    'CSS',
-    'TypeScript',
-  ]); // placeholder items in array, to remove
-
-  const clickHandler = () => {
-    setIsFiltered(!isFiltered);
-    setFilteredList(filteredList); // to remove later, placeholder only
-  };
+  const { isFiltered, filteredList } = useContext(JobContext);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -29,9 +18,6 @@ const JobList = () => {
   return (
     <>
       {isFiltered && <FilterTable list={filteredList} />}
-      <button type="button" onClick={clickHandler}>
-        Filter
-      </button>
       <List>
         {jobs.map((job) => (
           <JobItem key={job.id} job={job} />
