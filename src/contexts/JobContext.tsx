@@ -39,6 +39,7 @@ export const JobContext = createContext(initialValue);
 
 export const JobContextProvider = ({ children }: JobContextProps) => {
   const [jobs, setJobs] = useState(initialValue.jobs);
+  const [cachedData, setCachedData] = useState<Job[]>([]);
   const [isLoading, setIsLoading] = useState(initialValue.isLoading);
   const [isFiltered, setIsFiltered] = useState(initialValue.isFiltered);
   const [filteredList, setFilteredList] = useState(initialValue.filteredList);
@@ -48,6 +49,7 @@ export const JobContextProvider = ({ children }: JobContextProps) => {
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
+        setCachedData(data);
         setIsLoading(false);
       })
       .catch((error) => console.log(error.message));
@@ -82,14 +84,22 @@ export const JobContextProvider = ({ children }: JobContextProps) => {
 
     if (newList.length === 0) {
       setIsFiltered(false);
-      fetchData();
+      setJobs(cachedData);
+      return;
     }
+
+    const filterJob = cachedData.filter((job) => {
+      const labels = [...job.tools, ...job.languages];
+      return newList.every((item) => labels.includes(item));
+    });
+
+    setJobs(filterJob);
   };
 
   const clearFilter = (): void => {
     setFilteredList([]);
     setIsFiltered(false);
-    fetchData();
+    setJobs(cachedData);
   };
 
   const contextValue = useMemo(
