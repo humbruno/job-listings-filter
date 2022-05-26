@@ -31,6 +31,7 @@ const JobItem: React.FC<{ job: Job }> = ({ job }) => {
           </ul>
         </div>
       </div>
+      <span className="divider" aria-hidden="true" />
       <ul className="job__labels">
         {job.languages.map((language) => (
           <li key={language}>

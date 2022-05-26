@@ -6,6 +6,7 @@ const Item = styled.li<{ isFeatured: boolean }>`
   padding: 32px 40px;
   border-radius: 5px;
 
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,6 +15,10 @@ const Item = styled.li<{ isFeatured: boolean }>`
 
   border-left: ${(props) =>
     props.isFeatured ? '5px solid var(--clr-primary)' : 'none'};
+
+  .divider {
+    display: none;
+  }
 
   .job__info {
     display: flex;
@@ -60,7 +65,7 @@ const Item = styled.li<{ isFeatured: boolean }>`
   .job__labels {
     list-style: none;
     display: flex;
-    column-gap: 16px;
+    gap: 16px;
   }
 
   .job__title {
@@ -73,6 +78,38 @@ const Item = styled.li<{ isFeatured: boolean }>`
       list-style: none;
       display: flex;
       gap: 8px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 32px 24px;
+
+    img {
+      position: absolute;
+      top: 0;
+      transform: translateY(-50%);
+
+      width: 48px;
+      height: auto;
+    }
+
+    .job__tags {
+      margin-bottom: 16px;
+    }
+
+    .job__labels {
+      flex-wrap: wrap;
+    }
+
+    .divider {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #b7c4c4;
+      margin-bottom: 16px;
     }
   }
 `;

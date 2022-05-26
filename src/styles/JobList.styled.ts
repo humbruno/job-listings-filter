@@ -5,7 +5,11 @@ const List = styled.ul`
 
   display: flex;
   flex-direction: column;
-  row-gap: 24px;
+  gap: 24px;
+
+  @media (max-width: 1023px) {
+    gap: 40px;
+  }
 `;
 
 export default List;

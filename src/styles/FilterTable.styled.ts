@@ -21,7 +21,7 @@ const Filter = styled.div`
   ul {
     list-style: none;
     display: flex;
-    column-gap: 16px;
+    gap: 16px;
   }
 
   .clear {
@@ -37,6 +37,15 @@ const Filter = styled.div`
       cursor: pointer;
       color: var(--clr-primary);
       border-bottom: 1px solid var(--clr-primary);
+    }
+  }
+
+  @media (max-width: 1023px) {
+    padding: 20px 19px;
+    margin: 0 24px;
+
+    ul {
+      flex-wrap: wrap;
     }
   }
 `;

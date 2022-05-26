@@ -9,6 +9,10 @@ const Container = styled.main`
   padding: 76px 128px;
 
   position: relative;
+
+  @media (max-width: 1023px) {
+    padding: 76px 24px;
+  }
 `;
 
 export default Container;
